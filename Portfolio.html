@@ -1,87 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silambarasan | Engineering Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-    }
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f9f9ff, #dbefff);
+    color: #333;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+  }
 
+  /* === NAVBAR === */
+  .navbar {
+    background: #0c2d48;
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.7s ease;
+  }
+  #gallery .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+#gallery .col-md-3, 
+#gallery .col-6 {
+  flex: 0 0 220px; /* Equal fixed width for all */
+  max-width: 220px;
+}
+
+#gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover; /* Maintain aspect ratio and crop if needed */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease-in-out, box-shadow 0.3s ease;
+}
+
+#gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #00e6e6;
+  }
+
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+  }
+
+  .navbar ul li {
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .navbar ul li:hover {
+    color: #00e6e6;
+    transform: scale(1.1);
+  }
+
+  /* === SECTION === */
+  .section {
+    padding: 80px 20px;
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .section-title {
+    font-size: 2.7rem;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    text-shadow: 1px 1px 2px #aad4ff;
+  }
+
+  .section-title::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: #007bff;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    border-radius: 5px;
+    animation: growWidth 1s ease-out;
+  }
+
+  @keyframes growWidth {
+    from {
+      width: 0;
+    }
+    to {
+      width: 80px;
+    }
+  }
+
+  /* === IMAGES === */
+  .project-img, .img-fluid {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+
+  .project-img:hover, .img-fluid:hover {
+    transform: scale(1.05) rotate(0.5deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .about-pic {
+    max-width: 280px;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .about-pic:hover {
+    transform: scale(1.04) rotate(-1deg);
+  }
+
+  /* === BUTTONS === */
+  button {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    padding: 12px 28px;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+  }
+
+  /* === SOCIAL ICONS === */
+  .social-icons a {
+    font-size: 1.7rem;
+    margin: 0 12px;
+    color: #007bff;
+    transition: transform 0.3s, color 0.3s;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.2);
+    color: #003f7f;
+  }
+
+  /* === FOOTER === */
+  footer {
+    background: #001f33;
+    color: #fff;
+    text-align: center;
+    padding: 40px 10px;
+  }
+
+  footer a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  footer a:hover {
+    color: #00e6e6;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
     .navbar {
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .section {
-      padding: 60px 0;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .section-title {
-      font-size: 32px;
-      font-weight: bold;
-      color: #007bff;
-      margin-bottom: 30px;
-      cursor: pointer;
-    }
-
-    img.project-img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
-    }
-
-    img.project-img:hover {
-      transform: scale(1.05);
-    }
-
-    .skills-img {
-      width: 60px;
-      margin-right: 10px;
-    }
-
-    .social-icons a {
-      color: #007bff;
-      font-size: 1.5rem;
-      margin-right: 15px;
-      transition: color 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: #0056b3;
+    .navbar ul {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
     }
 
     .about-pic {
-      max-width: 300px;
-      border-radius: 15px;
-      margin-bottom: 20px;
+      left: 0;
     }
+  }
+</style>
 
-    footer {
-      background-color: #343a40;
-      color: white;
-      text-align: center;
-      padding: 30px 0;
-    }
-
-    footer a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    li{
-      cursor: pointer;
-    }
-  </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
@@ -99,7 +254,8 @@
           <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
           <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
           <li class="nav-item"><a class="nav-link" href="#internships">Internships</a></li>
-          <li class="nav-item"><a class="nav-link" href="Silambarasan .s Resume CSE (1).pdf" download>Download Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="Silambarasan .s Resume CSE (1).pdf" download>Download
+              Resume</a></li>
         </ul>
       </div>
     </div>
@@ -111,12 +267,17 @@
       <h2 class="section-title">About Me</h2>
       <p><strong>WEB DEVELOPMENT | UI/UX DESIGN | WEB DESIGN | PYTHON IN AI TOOLS</strong></p>
       <img src="WhatsApp Image 2025-04-10 at 12.30.17_eb9bfe0d.jpg" alt="Profile Picture" class="about-pic">
-      
-      <p>Hello! I'm <strong>Silambarasan</strong>, a passionate 3rd-year Computer Science Engineering student at Er. Perumal Manimekalai College of Engineering. I specialize in building responsive and intelligent web applications using the MERN stack. I love solving complex problems and creating clean UI/UX experiences.</p>
-      <p>With over 4 MERN projects and 5 UI/UX designs, I’ve gained real-world experience in full stack development, rapid prototyping, and scalable web systems. I thrive in collaborative environments, and I’m constantly looking to enhance both my technical and soft skills to match modern industry standards.</p>
+
+      <p>Hello! I'm <strong>Silambarasan</strong>, a passionate 3rd-year Computer Science Engineering student at Er.
+        Perumal Manimekalai College of Engineering. I specialize in building responsive and intelligent web applications
+        using the MERN stack. I love solving complex problems and creating clean UI/UX experiences.</p>
+      <p>With over 4 MERN projects and 5 UI/UX designs, I’ve gained real-world experience in full stack development,
+        rapid prototyping, and scalable web systems. I thrive in collaborative environments, and I’m constantly looking
+        to enhance both my technical and soft skills to match modern industry standards.</p>
       <div class="social-icons">
         <a href="https://github.com/silambucse26" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/silambarasan-selvam-556b89277/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/silambarasan-s-556b89277/" target="_blank"><i
+            class="fab fa-linkedin"></i></a>
         <a href="https://www.instagram.com/silambu__001_" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="mailto:silambarasancse8@gmail.com"><i class="fas fa-envelope"></i></a>
       </div>
@@ -126,19 +287,32 @@
     <section id="skills" class="section" data-aos="zoom-in">
       <h2 class="section-title">Skills</h2>
       <div class="row">
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/html-5.png" class="skills-img">HTML5</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/css3.png" class="skills-img">CSS3</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/javascript.png" class="skills-img">JavaScript</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/react-native.png" class="skills-img">React.js</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/nodejs.png" class="skills-img">Node.js</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/express.png" class="skills-img">Express.js</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/mongodb.png" class="skills-img">MongoDB</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/python.png" class="skills-img">Python (AI)</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/figma.png" class="skills-img">Figma</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/adobe-photoshop.png" class="skills-img">Photoshop</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/adobe-xd.png" class="skills-img">Adobe XD</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/canva.png" class="skills-img">Canva</div>
-        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/visual-studio-code-2019.png" class="skills-img">VS Code</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/html-5.png"
+            class="skills-img">HTML5</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/css3.png"
+            class="skills-img">CSS3</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/javascript.png"
+            class="skills-img">JavaScript</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/react-native.png"
+            class="skills-img">React.js</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/nodejs.png"
+            class="skills-img">Node.js</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/express.png"
+            class="skills-img">Express.js</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/mongodb.png"
+            class="skills-img">MongoDB</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/python.png"
+            class="skills-img">Python (AI)</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/figma.png"
+            class="skills-img">Figma</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img
+            src="https://img.icons8.com/color/60/adobe-photoshop.png" class="skills-img">Photoshop</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/adobe-xd.png"
+            class="skills-img">Adobe XD</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img src="https://img.icons8.com/color/60/canva.png"
+            class="skills-img">Canva</div>
+        <div class="col-md-4 d-flex align-items-center mb-3"><img
+            src="https://img.icons8.com/color/60/visual-studio-code-2019.png" class="skills-img">VS Code</div>
       </div>
     </section>
 
@@ -155,29 +329,39 @@
         <div class="col-md-4">
           <img src="PIZZ.png" alt="Finance Visualizer" class="project-img">
           <h5>PIZZA DELIVERY</h5>
-          <p>A fast and responsive Pizza Delivery application built using React.js for the frontend. Users can browse a variety of pizzas, customize their orders with toppings, select quantity, and place an order.</p>
+          <p>A fast and responsive Pizza Delivery application built using React.js for the frontend. Users can browse a
+            variety of pizzas, customize their orders with toppings, select quantity, and place an order.</p>
           <p>Tools Used: React.js, HTML5, CSS3, JavaScript (ES6), VS Code, React Router, React Icons</p>
-          <a href="https://github.com/silambucse26/Pizza-delivery" target="_blank" class="btn btn-primary">View Project</a>
+          <a href="https://github.com/silambucse26/Pizza-delivery" target="_blank" class="btn btn-primary">View
+            Project</a>
         </div>
         <div class="col-md-4">
           <img src="ui ux design.png" alt="E-commerce Dashboard" class="project-img">
           <h5>UI/UX Design – Microsoft Payment & Shopping (Figma)</h5>
-          <p>Designed a clean and modern UI/UX experience for a Microsoft-inspired Payment and Shopping platform using Figma. The design includes seamless payment flows, shopping cart management, order tracking, and user dashboard interfaces..</p>
-          <a href="https://www.figma.com/proto/A0sYM9v7omYFKgjdcFC4NB/Untitled?node-id=33-2&t=2nKBgMmFEhbeSkkY-1" target="_blank" class="btn btn-primary">View Project</a>
+          <p>Designed a clean and modern UI/UX experience for a Microsoft-inspired Payment and Shopping platform using
+            Figma. The design includes seamless payment flows, shopping cart management, order tracking, and user
+            dashboard interfaces..</p>
+          <a href="https://www.figma.com/proto/A0sYM9v7omYFKgjdcFC4NB/Untitled?node-id=33-2&t=2nKBgMmFEhbeSkkY-1"
+            target="_blank" class="btn btn-primary">View Project</a>
         </div>
         <div class="col-md-4">
-            <img src="cafe.png" alt="E-commerce Dashboard" class="project-img">
-            <h5>UI/UX Design – Smart Food Ordering via Table Scanner (Figma)</h5>
-            <p>Designed an innovative food ordering system where users can scan a QR code placed on the table to instantly access a restaurant’s digital menu. Using Figma, I created intuitive and responsive user flows that guide customers from scanning to checkout—without needing staff interaction. Features include a live menu, item customization, real-time order tracking, and secure payment</p>
-            <a href="https://www.figma.com/proto/BRA95OL5pDO4bkSnWNkw9A/Untitled?page-id=0%3A1&node-id=2-46&viewport=327%2C384%2C0.21&t=R43gCKwzpJpxPSNH-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2%3A2" target="_blank" class="btn btn-primary">View Project</a>
-          </div>
-          <div class="col-md-4">
-            <img src="cog.jpeg" alt="Finance Visualizer" class="project-img">
-            <h5>Cognifyz Website Application for Intern project</h5>
-            <p>Intership project</p>
-            <p>Tools Used: HTML5, CSS3, JavaScript (ES6), VS Code</p>
-            <a href="https://silambucse26.github.io/cognifyz-intern/Cognifyzintern.html" target="_blank" class="btn btn-primary">View Project</a>
-          </div>
+          <img src="cafe.png" alt="E-commerce Dashboard" class="project-img">
+          <h5>UI/UX Design – Smart Food Ordering via Table Scanner (Figma)</h5>
+          <p>Designed an innovative food ordering system where users can scan a QR code placed on the table to instantly
+            access a restaurant’s digital menu. Using Figma, I created intuitive and responsive user flows that guide
+            customers from scanning to checkout—without needing staff interaction. Features include a live menu, item
+            customization, real-time order tracking, and secure payment</p>
+          <a href="https://www.figma.com/proto/BRA95OL5pDO4bkSnWNkw9A/Untitled?page-id=0%3A1&node-id=2-46&viewport=327%2C384%2C0.21&t=R43gCKwzpJpxPSNH-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2%3A2"
+            target="_blank" class="btn btn-primary">View Project</a>
+        </div>
+        <div class="col-md-4">
+          <img src="cog.jpeg" alt="Finance Visualizer" class="project-img">
+          <h5>Cognifyz Website Application for Intern project</h5>
+          <p>Intership project</p>
+          <p>Tools Used: HTML5, CSS3, JavaScript (ES6), VS Code</p>
+          <a href="https://silambucse26.github.io/cognifyz-intern/Cognifyzintern.html" target="_blank"
+            class="btn btn-primary">View Project</a>
+        </div>
 
       </div>
     </section>
@@ -204,28 +388,57 @@
         <li onclick="window.open('WhatsApp Image 2025-04-12 at 14.22.20_84479f72.jpg', '_blank')">
           🧠 Attended Microsoft Research AI Meetup Workshop
         </li>
-        <li >
+        <li>
           📊 Appeared for JEE – Scored 47%
         </li>
       </ul>
-      
+
     </section>
 
     <!-- Certifications Section -->
     <section id="certifications" class="section" data-aos="fade-down">
       <h2 class="section-title">Certifications</h2>
       <ul>
-        <li><a href="SilambarasanFull Stack React E-Commerce Projec.png" target="_blank">Full Stack Web Development – GreatStack</a></li>
+        <li><a href="SilambarasanFull Stack React E-Commerce Projec.png" target="_blank">Full Stack Web Development –
+            GreatStack</a></li>
         <li><a href="UP skill python certificates.png" target="_blank">Python Programming – Upskill</a></li>
         <li><a href="ui.png" target="_blank">UI/UX Design – Le Wagon</a></li>
         <li><a href="web.png" target="_blank">Responsive Web Development – SkillUp</a></li>
       </ul>
     </section>
+    <!-- Add after Internships section -->
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section" data-aos="fade-right">
+      <h2 class="section-title">My Images & Achievements</h2>
+
+      <h4 class="mb-4 text-primary"></h4>
+      <div class="row g-4">
+        <div class="col-md-3 col-6">
+          <img src="WhatsApp Image 2025-04-12 at 14.09.20_c38a0505.jpg" class="img-fluid rounded shadow-sm" alt="My Photo 1">
+        </div>
+        <div class="col-md-3 col-6">
+          <img src="WhatsApp Image 2025-04-12 at 14.22.20_84479f72.jpg" class="img-fluid rounded shadow-sm" alt="My Photo 2">
+        </div>
+        <div class="col-md-3 col-6">
+          <img src="infosys.jpg" class="img-fluid rounded shadow-sm" alt="My Photo 3">
+        </div>
+        <div class="col-md-3 col-6">
+          <img src="WhatsApp Image 2025-06-17 at 10.54.48_0ed65aa5.jpg" class="img-fluid rounded shadow-sm" alt="My Photo 3">
+        </div>
+        <div class="col-md-3 col-6">
+          <img src="project explanation.jpg" class="img-fluid rounded shadow-sm" alt="My Photo 4">
+        </div>
+      </div>
+    </section>
+
 
     <!-- Internships Section -->
     <section id="internships" class="section" data-aos="fade-up">
       <h2 class="section-title">Internships</h2>
-      <p><strong>Web Development Intern at Edvedha</strong> – FEB to MAY (45 days online internship). Learned core web development technologies, participated in team projects, and worked with backend APIs to enhance frontend features.</p>
+      <p><strong>Web Development Intern at Edvedha</strong> – FEB to MAY (45 days online internship). Learned core web
+        development technologies, participated in team projects, and worked with backend APIs to enhance frontend
+        features.</p>
       <button onclick="window.open('intern.png', '_blank')">CERTIFICATE</button>
 
     </section>
@@ -250,4 +463,5 @@
     });
   </script>
 </body>
+
 </html>
